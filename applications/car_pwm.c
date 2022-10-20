@@ -22,7 +22,7 @@ struct rt_device_pwm * pwm1 = RT_NULL;
 struct rt_device_pwm * pwm2 = RT_NULL;
 
 rt_uint32_t period = 1000000 ;
-rt_uint32_t pulse = 22;
+rt_uint32_t pulse = 50;
 
 int pwm_init(void)
 {
@@ -92,42 +92,7 @@ int my_pwm_set(int argc,char **argv)
 }
 MSH_CMD_EXPORT(my_pwm_set , <input percent(%)>to set the pwm pulse);
 
-//rt_err_t my_pwm_set_pulse(struct rt_device_pwm * pwm_dev,rt_uint32_t pulse_val)
-//{
-//    rt_err_t ret=RT_EOK;
-//    static int iii1=0,iii2=0,iii3=0;
-//      iii1++,iii2++,iii3++;
-//    RT_ASSERT(pwm_dev);
-//    if(iii3==50)
-//    {
-//     //   rt_kprintf("-llll %d-\r\n",pulse_val);
-//        iii3 = 0;
-//    }
-//
-//    if(pwm_dev == pwm1)
-//    {
-//        ret = rt_pwm_set(pwm_dev, PWM_CHANNEL1, period, pulse_val);
-//        if(iii1==50)
-//        {
-//            rt_kprintf("-pwm1 %d-\r\n",pulse_val);
-//            iii1 = 0;
-//        }
-//    }
-//
-//    if(pwm_dev == pwm2)
-//    {
-//        ret = rt_pwm_set(pwm_dev, PWM_CHANNEL2, period, pulse_val);
-//        if(iii2==50)
-//        {
-//            rt_kprintf("-pwm2 %d-\r\n",pulse_val);
-//            iii2 = 0;
-//        }
-//    }
-//
-//
-//
-//    return ret;
-//}
+
 
 rt_err_t my_pwm_enable(void)
 {

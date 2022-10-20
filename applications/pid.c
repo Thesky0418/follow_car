@@ -22,10 +22,10 @@ extern struct rt_device_pwm * pwm2 ;
 
 rt_int32_t pwm_l,pwm_r;
 rt_int32_t speed;
-int middle = 164;
-float kp = 200000;
-float ki = -2;
-float kd = 3;
+int middle = 162;
+float kp = 180089;
+float ki = -2.33;
+float kd = 81;
 float dia=0;
 
 rt_thread_t pid_thread = RT_NULL;
@@ -65,18 +65,8 @@ void pwm_abs(rt_int32_t pwm_1,rt_int32_t pwm_2)
             rt_pin_write(BIN1_PIN, PIN_HIGH);
             rt_pin_write(BIN2_PIN, PIN_LOW);
         }
-//        static int ill4 = 0;
-//                ill4++;
-//        if(ill4==50)
-//        {
-//            rt_kprintf("-%d %d-\r\n",pwm_1,pwm_2);
-//            ill4 = 0;
-//        }
 
         pwm_limit(&pwm_1, &pwm_2);
-//        my_pwm_set_pulse(pwm1, pwm_1);
-//        my_pwm_set_pulse(pwm2, pwm_2);
-        //rt_kprintf("--%d-%d--\r\n",pwm_1,pwm_2);
         rt_pwm_set(pwm1, PWM_CHANNEL1, period,(rt_uint32_t) pwm_1);
         rt_pwm_set(pwm2, PWM_CHANNEL2, period,(rt_uint32_t) pwm_2);
 }
